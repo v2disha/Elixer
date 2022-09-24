@@ -1,19 +1,16 @@
 import React from 'react';
-import './feature.css';
+import { Link } from 'react-router-dom';
+import './feature.scss';
 
-const Feature = ({ title, text }) => (
-  <div className="elx__features-container__feature">
-    <div className="elx__features-container__feature-title">
-      <div />
-      <h1>{title}</h1>
+const Feature = (props) => {
+const {item} = props;
+return (
+  <div className="img-box">
+    <img src={item.img} alt="crybox" />
+    <div className="content">
+        <Link to="/nft-item">{item.title}</Link>
     </div>
-    <div className="elx__features-container_feature-text">
-      <p className="our-project">{text}</p>
-    </div>
-    <div className="elx__footer-btn">
-      <a href='#'>{title}</a>
-    </div>
-  </div>
-);
+  </div>);
+}
 
 export default Feature;

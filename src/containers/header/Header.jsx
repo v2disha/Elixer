@@ -1,29 +1,73 @@
-import React from 'react';
-import people from '../../assets/people.png';
-import avatar from '../../assets//GifImage/AllInOne.gif';
-import './header.css';
+import React , { useState , useEffect } from 'react';
+import { Link , NavLink } from 'react-router-dom';
+import menus from '../pages/menu';
+import logo from '../../../src/assets/media/logo.png'
+import Button from '../../components/button/button';
+import './header.scss';
 
-const Header = () => (
-  <div className="elx__header section__padding" id="home">
-    <div className="elx__header-content">
-      <h1 className="gradient__text">Elixir:Ascension of Eternity</h1>
-      <p>Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment. Party we years to order allow asked of.</p>
 
-      <div className="elx__header-content__input">
-        <input type="email" placeholder="Your Email Address" />
-        <button type="button">Get Started</button>
-      </div>
 
-      <div className="elx__header-content__people">
-        <img src={people} alt="people"/>
-        <p>1,600 people requested access a visit in last 24 hours</p>
-      </div>
-    </div>
+const Header = () => {
 
-    <div className="elx__header-image">
-      <img src={avatar} alt="avatar"/>
-    </div>
-  </div>
-);
+    const [scroll, setScroll] = useState(false);
+        useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setScroll(window.scrollY > 300);
+        });
+        return () => {
+            setScroll({});
+        }
+    }, []);
 
+    const [menuActive, setMenuActive] = useState(null);
+
+    const handleMenuActive = () => {
+        setMenuActive(!menuActive);
+      };
+
+    
+    const [activeIndex, setActiveIndex] = useState(null);
+    const handleDropdown = index => {
+        setActiveIndex(index); 
+    };
+
+    return (
+        <header id="header_main" className={`header ${scroll ? 'is-fixed' : ''}`}>
+            <div className="container">
+                <div id="site-header-inner">
+                    <div className="header__logo">
+                        <NavLink to="/"><img src={logo} alt="Elixer" /></NavLink>
+                    </div>
+                    <nav id="main-nav" className={`main-nav ${menuActive ? 'active' : ''}`} >
+                        <ul id="menu-primary-menu" className="menu">
+
+                            {
+                                menus.map((data,idx) => (
+                                    <li key={idx} onClick={()=> handleDropdown(idx)} className={`menu-item ${data.namesub ? 'menu-item-has-children' : ''} ${activeIndex === idx ? 'active' : ''}`} 
+                                    
+                                    >
+                                        <Link to={data.links}>{data.name}</Link>
+                                        {
+                                            data.namesub &&
+                                            <ul className="sub-menu">
+                                                {
+                                                    data.namesub.map((submenu) => (
+                                                        <li key={submenu.id} className="menu-item"><NavLink to={submenu.links}>{submenu.sub}</NavLink></li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        }
+                                        
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </nav>
+                    <Button title='join discord' path='/contact' />
+                    <div className={`mobile-button ${menuActive ? 'active' : ''}`} onClick={handleMenuActive}><span></span></div>
+                </div>
+            </div>
+        </header>
+    );
+}
 export default Header;

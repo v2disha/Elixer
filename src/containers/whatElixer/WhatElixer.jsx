@@ -1,23 +1,49 @@
-import React from 'react';
-import  './whatElixer.css';
+import React , {useState} from 'react';
+import Button from '../../components/button/button';
+import  './whatElixer.scss';
+import data from './imports';
 
-const WhatElixer = () => (
-  <div>
-    <h1 className="gradient__text-header">What is Elixer</h1>
-    <div className="elx__whatelx section__margin" id="welx">
-      <div className="elx__whatelx-heading">
-        <p>A few years ago, we, the Genesis Force (the special unit of the AlphaSkullz), reached your 
-          planet and began to infiltrate it. Your strength is rather poor, but you have developed something 
-          that interests us: your virtual neural multiverse called "the Internet". It's possible to create 
-          fantastic, crazy shit... virtually. No resources are needed and the possibilities are endless. We want to
-          have that.<br/><br/>So we uploaded ourselves to the internet. Since you are not completely uninvolved in this internet, we offer some of you a unique chance. Join the glory AlphaSkullz and become part of an unprecedented alliance. Then you need not fear our strength.
-          <br/><br/>We have decided to create 3,333 NFTs to simultaneously honor our Genesis Force. We want to see how great the will 
-          of the humans is to become an AlphaSkull. If this will is great enough and all NFTs are occupied, an alliance between humans and
-            AlphaSkullz will be formed. Sounds fantastic right? Join us and let's do great things!</p>
+const WhatElixer = () => {
+
+  const [dataBlock] = useState(
+    {
+        subtitle : 'About us',
+        title: 'What is Elixer?',
+        desc : 'Maecenas sit pretium, cras in. In quisque sem id eget. In vel gravida ut adipiscing integer felis. Id ac non arcu facilisi proin ultrices sed. Id accumsan quam viverra ante in id integer ut. Volutpat lobortis dolor etiam dis interdum tincidunt senectus.'
+    }
+)
+  return (
+    <section className="tf-section tf-about">
+      <div className="container">
+          <div className="row">
+              <div className="about-us">
+                  <div className="content-about mobie-40" data-aos="fade-up" data-aos-duration="800">
+                      <div className="tf-title st2">
+                          <p className="h8 sub-title">{dataBlock.subtitle}</p>
+                          <h4 className="title">{dataBlock.title}</h4>
+                      </div>
+                      <p>{dataBlock.desc}</p>
+                          <Button title="get Nfts" path='/' />
+                  </div>
+              </div>
+              <div className="what-we-do">
+                  <div className="wrap-about" data-aos="fade-up" data-aos-duration="800">
+                      {
+                          data.map(item => (
+                            <div key={item.id} className={`box-text corner-box ${item.class}`}>
+                              <div className="h7">{item.title}</div>
+                              <p>{item.desc}</p>
+                            </div>
+                          ))
+                      }
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-  </div>
-    
-);
+    </section>
+  );
+}
+
+  
 
 export default WhatElixer;

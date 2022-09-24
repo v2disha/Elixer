@@ -1,35 +1,50 @@
 import React from 'react';
-import { google, slack, atlassian, dropbox, shopify, M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, M11 } from './imports';
-import './brand.css';
+import './brand.scss';
+import { Link } from 'react-router-dom';
+import bgImg1 from '../../assets/media/bg-4.b06f904d58e0c5c06ac7.jpg';
+import img1 from '../../assets/GifImage/Armour3.gif';
 
-const Brand = () => (
-  <div className=" elx__blog section__padding eternals">
-    <h1>Meet Our Eternals</h1>
-    <div className="container">
-      <div className="photobanner">
-          <img src={M1} />
-          <img src={M2} />
-          <img src={M3} />
-          <img src={M4} />
-          <img src={M5} />
-          <img src={M6} />
+const Brand = () => {
+  const data = {
+      id: 1,
+      title: 'Elixer nft collectionS for everyone',
+      desc : 'Nulla ornare sagittis placerat nunc sit tempus enim. Accumsan pellentesque ipsum felis tristique at proin vel turpis.',
+      bgImg: bgImg1,
+      img : img1
+    };
+
+  return (
+    <section className='slider'>
+      <div className={`box-slider ${data.classAction}`}>
+        <img className='bg-slider' src={data.bgImg} alt="elixer" />
+        <div className="box-slider__main">
+            <div className="container">
+                <div className="row">
+                    <div className="col-xl-6 col-md-12">
+                        <div className="content-box">
+                            <h1 className="title">{data.title}</h1>
+                            <p className="sub-title">{data.desc}</p>
+                            <div className="wrap-btn">
+                                <Link to="/contact" className="tf-button-st2 btn-effect"><span className="effect">connect wallet</span></Link>
+                                <button to="#" className="tf-button btn-effect popup-youtube">
+                                    <span className="boder-fade"></span>                                     
+                                    <span className="effect">watch video</span>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-6 col-md-12">
+                        <div className="image">
+                            <img src={data.img} alt="elixer" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
-    </div>
-    <div className="container">
-      <div className="photobanner">
-          <img src={M7} />
-          <img src={M8} />
-          <img src={M9} />
-          <img src={M10} />
-          <img src={M11} />
-      </div>
-    </div>
-    <div className="notification-banner">
-    <p>	
-    SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | SOLD OUT | PHASE 2 COMING SOON | 
-    </p>
-    </div>
-</div>
-);
+    </section>
+  );
+}
 
 export default Brand;

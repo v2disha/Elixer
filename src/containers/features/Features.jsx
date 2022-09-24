@@ -1,38 +1,84 @@
 import React from 'react';
+import SwiperCore, { Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Feature from '../../components/feature/Feature';
-import './features.css';
+import data from './imports';
+import './features.scss';
 
-const featuresData = [
-  {
-    title: 'Improving end distrusts instantly',
-    text: 'From they fine john he give of rich he. They age and draw mrs like. Improving end distrusts may instantly was household applauded.',
-  },
-  {
-    title: 'Become the tended active',
-    text: 'Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to.',
-  },
-  {
-    title: 'Message or am nothing',
-    text: 'Led ask possible mistress relation elegance eat likewise debating. By message or am nothing amongst chiefly address.',
-  },
-  {
-    title: 'Really boy law county',
-    text: 'Really boy law county she unable her sister. Feet you off its like like six. Among sex are leave law built now. In built table in an rapid blush..',
-  },
-];
+const Features = () => {
 
-const Features = () => (
-  <div className="elx__features section__padding" id="features">
-    <div className="elx__features-heading">
-      <h1 className="gradient__text">The Future is Now and You Just Need to Realize It. Step into Future Today. & Make it Happen.</h1>
-      <p>Request Early Access to Get Started</p>
-    </div>
-    <div className="elx__features-container">
-      {featuresData.map((item, index) => (
-        <Feature title={item.title} text={item.text} key={item.title + index} />
-      ))}
-    </div>
-  </div>
-);
+  SwiperCore.use([Autoplay]);
+
+  return (
+    <section className="tf-section tf-project">
+      <div className="container-fluid">
+        <Swiper
+            className='swiper-portfolio s1'
+            spaceBetween={30}
+            breakpoints={{
+                0: {
+                    slidesPerView: 2,
+                    },
+                767: {
+                    slidesPerView: 3,
+                },
+                991: {
+                    slidesPerView: 5,
+                },
+            }}
+            loop
+            autoplay={{
+                delay: 1,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            }}
+            speed= {2000}
+        >
+            {
+                data.map(item => (
+                    <SwiperSlide key={item.id}>
+                        <Feature item={item} />
+                    </SwiperSlide>
+                ))
+            }
+  
+        </Swiper>
+  
+        <Swiper
+            className='swiper-portfolio s1 mt-30'
+            modules={[ Autoplay ]}
+            spaceBetween={30}
+            breakpoints={{
+                0: {
+                    slidesPerView: 2,
+                    },
+                767: {
+                    slidesPerView: 3,
+                },
+                991: {
+                    slidesPerView: 5,
+                },
+            }}
+            loop
+            autoplay={{
+                delay: 1,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+                reverseDirection: true,
+            }}
+            speed= {2000}
+        >
+            {
+                data.map(item => (
+                    <SwiperSlide key={item.id}>
+                        <Feature item={item} />
+                    </SwiperSlide>
+                ))
+            }
+        </Swiper>
+      </div>
+    </section>
+  );
+}
 
 export default Features;

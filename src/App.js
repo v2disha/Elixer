@@ -1,18 +1,16 @@
 import React from 'react';
-import { Footer,Blog,WhatElixer,Header,FAQ } from './containers';
-import { CTA, Brand, Navbar } from './components';
-import './App.css';
+import { Footer,Blog,WhatElixer,Header,FAQ, Features, Possibility } from './containers';
+import { Brand } from './components';
+import './App.scss';
 
 const App = () => {
   return (
     <div className='App'>
-      <div className='gradient__bg'>
-        <Navbar/>
-        <Header/>
-      </div>
+      <Header/>
       <Brand/>
       <WhatElixer/>
-      <CTA/>
+      <Features/>
+      <Possibility/>
       <Blog/>
       <FAQ/>
       <Footer/>
